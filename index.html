@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>压缩图片</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>压缩图片</h1>
+        
+        <div class="button-group">
+            <input type="file" id="imageInput" accept="image/*">
+            <label for="imageInput" class="upload-button">选择图片</label>
+            <div class="compress-size-control">
+                <button id="customCompressBtn" class="compress-button" disabled>压缩到</button>
+                <input type="number" id="customSize" min="100" step="100" value="0" class="size-input">
+                <span class="unit">KB (<span id="sizeInMB">0</span> MB)</span>
+            </div>
+            <button id="downloadBtn" class="download-button" disabled>下载压缩图片</button>
+            <button id="clearBtn" class="clear-button">清空</button>
+        </div>
+
+        <div class="preview-section">
+            <div class="image-container">
+                <h3>原始图片</h3>
+                <img id="originalImage" src="" alt="">
+                <div class="image-info">
+                    <p id="originalSize"></p>
+                    <p id="originalDimensions"></p>
+                </div>
+            </div>
+            <div class="image-container">
+                <h3>压缩后图片</h3>
+                <img id="compressedImage" src="" alt="">
+                <div class="image-info">
+                    <p id="compressedSize"></p>
+                    <p id="compressedDimensions"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="successModal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>压缩成功！</h2>
+                <div class="modal-buttons">
+                    <button class="modal-button confirm-button" id="confirmBtn">确认</button>
+                    <button class="modal-button cancel-button" id="cancelBtn">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="imagePreviewModal">
+            <div class="modal-content image-preview-content">
+                <span class="close-button">&times;</span>
+                <img id="previewImage" src="" alt="">
+            </div>
+        </div>
+
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>压缩大小不能超过原始图片大小，请重新输入！</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
